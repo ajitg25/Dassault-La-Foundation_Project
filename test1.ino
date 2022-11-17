@@ -13,19 +13,18 @@ uint32_t raw;
 void setup(){// put your setup code here, to run once 
 Serial.begin(115200);
 pinMode(turbidity_pin, INPUT);
-Serial.println("Turbidity Sensor"); 
 delay(2000);
 }
  
 void loop(){
-  
+  /////Turbidity Sensor
 read_ADC = analogRead(turbidity_pin);
 //if(read_ADC>208)read_ADC=208;
 
 //ntu = map(read_ADC, 0, 208, 300, 0); 
- 
+Serial.print("Turbidity: "); 
 Serial.println(read_ADC);
-Serial.print("Turbidity: ");
+
 //Serial.println(ntu);
 
 //
@@ -66,8 +65,8 @@ for(int i=0;i<10;i++)       //Get 10 sample value from the sensor for smooth the
   delay(800);
   digitalWrite(13, LOW); 
 
- /////////////////////
- raw=analogRead(A2);
+ /////////////////////Dissolven oxygen
+    raw=analogRead(A2);
     Serial.println("raw:\t"+String(raw)+"\tVoltage(mv)"+String(raw*VREF/ADC_RES));
     delay(1000);
 }
